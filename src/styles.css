@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-pcb-green: var(--pcb-green);
+  --color-pcb-trace: var(--pcb-trace);
+  --color-pcb-glow: var(--pcb-glow);
+  --color-pcb-copper: var(--pcb-copper);
+  --color-pcb-solder: var(--pcb-solder);
+  --color-level-basic: var(--level-basic);
+  --color-level-intermediate: var(--level-intermediate);
+  --color-level-advanced: var(--level-advanced);
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.12 0.02 160);
+  --foreground: oklch(0.92 0.02 160);
+  --card: oklch(0.16 0.025 160);
+  --card-foreground: oklch(0.92 0.02 160);
+  --popover: oklch(0.16 0.025 160);
+  --popover-foreground: oklch(0.92 0.02 160);
+  --primary: oklch(0.72 0.19 155);
+  --primary-foreground: oklch(0.1 0.02 160);
+  --secondary: oklch(0.22 0.03 160);
+  --secondary-foreground: oklch(0.85 0.05 155);
+  --muted: oklch(0.18 0.02 160);
+  --muted-foreground: oklch(0.6 0.04 160);
+  --accent: oklch(0.65 0.22 85);
+  --accent-foreground: oklch(0.1 0.02 85);
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.95 0.01 25);
+  --border: oklch(0.25 0.04 155);
+  --input: oklch(0.22 0.03 155);
+  --ring: oklch(0.72 0.19 155);
+  --chart-1: oklch(0.72 0.19 155);
+  --chart-2: oklch(0.65 0.22 85);
+  --chart-3: oklch(0.6 0.18 200);
+  --chart-4: oklch(0.7 0.15 300);
+  --chart-5: oklch(0.58 0.22 25);
+  --sidebar: oklch(0.14 0.02 160);
+  --sidebar-foreground: oklch(0.92 0.02 160);
+  --sidebar-primary: oklch(0.72 0.19 155);
+  --sidebar-primary-foreground: oklch(0.1 0.02 160);
+  --sidebar-accent: oklch(0.22 0.03 160);
+  --sidebar-accent-foreground: oklch(0.85 0.05 155);
+  --sidebar-border: oklch(0.25 0.04 155);
+  --sidebar-ring: oklch(0.72 0.19 155);
+
+  /* PCB theme tokens */
+  --pcb-green: oklch(0.45 0.15 155);
+  --pcb-trace: oklch(0.72 0.19 155);
+  --pcb-glow: oklch(0.8 0.25 155);
+  --pcb-copper: oklch(0.65 0.15 70);
+  --pcb-solder: oklch(0.75 0.05 90);
+  --level-basic: oklch(0.72 0.19 155);
+  --level-intermediate: oklch(0.65 0.22 85);
+  --level-advanced: oklch(0.58 0.22 25);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* PCB trace animation */
+@keyframes trace-flow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; filter: blur(4px); }
+  50% { opacity: 1; filter: blur(8px); }
+}
+
+@keyframes circuit-dot {
+  0% { offset-distance: 0%; opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0.3; }
+}
+
+@layer utilities {
+  .animate-trace-flow {
+    animation: trace-flow 3s linear infinite;
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  .pcb-grid {
+    background-image:
+      linear-gradient(var(--color-pcb-trace) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-pcb-trace) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center;
+    opacity: 0.07;
+  }
+}
